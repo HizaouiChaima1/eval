@@ -1,14 +1,15 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Header } from '@/components/Header'
 import { getSessionUserId } from '@/app/actions/auth'
 import { buildMetadata } from '@/lib/seo'
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
+  variable: '--font-jakarta',
 })
 
 export const metadata: Metadata = buildMetadata()
@@ -22,9 +23,9 @@ export default async function RootLayout({
 
   return (
     <html lang="fr">
-      <body className={`${inter.className} min-h-screen bg-gray-50 text-gray-900`}>
+      <body className={`${jakarta.variable} ${jakarta.className} min-h-screen`}>
         <Header isAuthenticated={userId !== null} />
-        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+        <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">{children}</main>
       </body>
     </html>
   )

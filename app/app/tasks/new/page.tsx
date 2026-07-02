@@ -18,7 +18,10 @@ export default async function NewTaskPage() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">Ajouter une tâche</h1>
+      <div className="page-header">
+        <h1 className="page-title">Ajouter une tâche</h1>
+        <p className="page-subtitle">Décrivez ce que vous souhaitez accomplir.</p>
+      </div>
       <TaskForm />
     </div>
   )

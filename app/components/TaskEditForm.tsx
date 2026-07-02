@@ -21,10 +21,10 @@ export function TaskEditForm({ taskId, defaultValues }: TaskEditFormProps) {
   } satisfies ActionState)
 
   return (
-    <div className="flex max-w-lg flex-col gap-6">
-      <form action={formAction} className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
+      <form action={formAction} className="card flex flex-col gap-5 p-6">
         <div>
-          <label htmlFor="title" className="mb-1 block text-sm font-medium text-gray-900">
+          <label htmlFor="title" className="label">
             Titre
           </label>
           <input
@@ -33,11 +33,11 @@ export function TaskEditForm({ taskId, defaultValues }: TaskEditFormProps) {
             type="text"
             required
             defaultValue={defaultValues.title}
-            className="w-full rounded border border-gray-300 px-3 py-2"
+            className="input"
           />
         </div>
         <div>
-          <label htmlFor="description" className="mb-1 block text-sm font-medium text-gray-900">
+          <label htmlFor="description" className="label">
             Description
           </label>
           <textarea
@@ -45,36 +45,37 @@ export function TaskEditForm({ taskId, defaultValues }: TaskEditFormProps) {
             name="description"
             rows={4}
             defaultValue={defaultValues.description ?? ''}
-            className="w-full rounded border border-gray-300 px-3 py-2"
+            className="input resize-none"
           />
         </div>
-        <label className="flex items-center gap-2 text-sm text-gray-900">
+        <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-700 transition-colors hover:bg-slate-50">
           <input
             type="checkbox"
             name="completed"
             defaultChecked={defaultValues.completed}
+            className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500/30"
           />
-          Terminée
+          Marquer comme terminée
         </label>
         {state.message && (
-          <p className={`text-sm ${state.success ? 'text-green-600' : 'text-red-600'}`}>
+          <p
+            className={`rounded-lg px-3 py-2 text-sm ${
+              state.success ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-600'
+            }`}
+          >
             {state.message}
           </p>
         )}
-        <button
-          type="submit"
-          disabled={pending}
-          className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-        >
+        <button type="submit" disabled={pending} className="btn-primary w-full sm:w-auto">
           {pending ? 'Enregistrement...' : 'Enregistrer'}
         </button>
       </form>
 
-      <form action={deleteTaskAction.bind(null, taskId)}>
-        <button
-          type="submit"
-          className="rounded border border-red-300 px-4 py-2 text-red-600 hover:bg-red-50"
-        >
+      <form action={deleteTaskAction.bind(null, taskId)} className="card p-6">
+        <p className="mb-4 text-sm text-slate-500">
+          Cette action est irréversible. La tâche sera définitivement supprimée.
+        </p>
+        <button type="submit" className="btn-danger">
           Supprimer la tâche
         </button>
       </form>

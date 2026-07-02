@@ -10,9 +10,9 @@ export function TaskForm() {
   const [state, formAction, pending] = useActionState(createTaskAction, initialState)
 
   return (
-    <form action={formAction} className="flex max-w-lg flex-col gap-4">
+    <form action={formAction} className="card flex flex-col gap-5 p-6">
       <div>
-        <label htmlFor="title" className="mb-1 block text-sm font-medium text-gray-900">
+        <label htmlFor="title" className="label">
           Titre
         </label>
         <input
@@ -20,34 +20,32 @@ export function TaskForm() {
           name="title"
           type="text"
           required
-          className="w-full rounded border border-gray-300 px-3 py-2"
+          placeholder="Ex. Préparer la réunion"
+          className="input"
         />
         {state.errors?.title && (
-          <p className="mt-1 text-sm text-red-600">{state.errors.title[0]}</p>
+          <p className="mt-1.5 text-sm text-red-600">{state.errors.title[0]}</p>
         )}
       </div>
       <div>
-        <label htmlFor="description" className="mb-1 block text-sm font-medium text-gray-900">
+        <label htmlFor="description" className="label">
           Description
         </label>
         <textarea
           id="description"
           name="description"
           rows={4}
-          className="w-full rounded border border-gray-300 px-3 py-2"
+          placeholder="Détails optionnels..."
+          className="input resize-none"
         />
         {state.errors?.description && (
-          <p className="mt-1 text-sm text-red-600">{state.errors.description[0]}</p>
+          <p className="mt-1.5 text-sm text-red-600">{state.errors.description[0]}</p>
         )}
       </div>
       {state.message && !state.success && (
-        <p className="text-sm text-red-600">{state.message}</p>
+        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{state.message}</p>
       )}
-      <button
-        type="submit"
-        disabled={pending}
-        className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-      >
+      <button type="submit" disabled={pending} className="btn-primary w-full sm:w-auto">
         {pending ? 'Création...' : 'Créer la tâche'}
       </button>
     </form>

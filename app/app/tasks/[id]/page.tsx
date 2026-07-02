@@ -52,7 +52,10 @@ export default async function TaskDetailPage({ params }: PageProps) {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">Modifier la tâche</h1>
+      <div className="page-header">
+        <h1 className="page-title">Modifier la tâche</h1>
+        <p className="page-subtitle">Mettez à jour les détails ou supprimez la tâche.</p>
+      </div>
       <TaskEditForm
         taskId={task.id}
         defaultValues={{
