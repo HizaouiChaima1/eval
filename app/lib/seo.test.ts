@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { buildMetadata, SITE_NAME } from '@/lib/seo'
-
 describe('buildMetadata', () => {
   beforeEach(() => {
-    vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://taskflow.example.com')
+    vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://evalproject-kappa.vercel.app/')
   })
 
   it('génère les métadonnées par défaut', () => {
@@ -24,6 +23,6 @@ describe('buildMetadata', () => {
 
   it('inclut une URL canonique', () => {
     const metadata = buildMetadata({ path: '/auth' })
-    expect(metadata.alternates?.canonical).toBe('https://taskflow.example.com/auth')
+    expect(metadata.alternates?.canonical).toBe('https://evalproject-kappa.vercel.app/auth')
   })
 })

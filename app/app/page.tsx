@@ -29,7 +29,6 @@ async function TaskList() {
   }
 
   const tasks = await getCachedTasks(userId)
-
   if (tasks.length === 0) {
     return (
       <p className="text-gray-600">
