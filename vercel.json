@@ -2,8 +2,8 @@
   "version": 2,
   "framework": "nextjs",
   "rootDirectory": "app",
-  "installCommand": "npm install --prefix app",
-  "buildCommand": "npm run build --prefix app",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "devCommand": "npm run dev"
 }
