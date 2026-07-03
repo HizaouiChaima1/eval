@@ -7,12 +7,10 @@ import { toggleTaskAction } from '@/app/actions/tasks'
 
 export const metadata = buildMetadata({
   title: 'Accueil',
-  description: 'Liste de vos tâches — gérez votre productivité avec TaskFlow.',
+  description: 'Liste de vos tâches — gérez votre productivité avec Task.',
   path: '/',
 })
-
 export const revalidate = 60
-
 // Type correspondant à ce que retourne getCachedTasks.
 // Adapte les champs si ta structure réelle diffère (ex: description optionnelle, etc.)
 type Task = {
@@ -33,7 +31,7 @@ async function TaskList({ userId }: { userId: number | null }) {
         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
           ✓
         </div>
-        <h2 className="text-lg font-semibold text-slate-900">Bienvenue sur TaskFlow</h2>
+        <h2 className="text-lg font-semibold text-slate-900">Bienvenue sur Tasks</h2>
         <p className="mt-2 max-w-sm text-sm text-slate-500">
           Connectez-vous pour gérer vos tâches et suivre votre productivité.
         </p>
@@ -48,7 +46,6 @@ async function TaskList({ userId }: { userId: number | null }) {
       </div>
     )
   }
-
   const tasks: Task[] = await getCachedTasks(userId)
   const completedCount = tasks.filter((t: Task) => t.completed).length
   const pendingCount = tasks.length - completedCount

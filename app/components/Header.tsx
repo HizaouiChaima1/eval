@@ -14,7 +14,7 @@ export function Header({ isAuthenticated }: HeaderProps) {
             T
           </span>
           <span className="text-lg font-bold tracking-tight text-slate-900">
-            TaskFlow
+            Tasks
           </span>
         </Link>
         <div className="flex items-center gap-1 text-sm sm:gap-2">
