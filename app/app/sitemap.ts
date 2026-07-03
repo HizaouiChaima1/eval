@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getSiteUrl } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = getSiteUrl()
+  const siteUrl = "https://eval-67eb.vercel.app/"
   return [
     {
       url: siteUrl,
