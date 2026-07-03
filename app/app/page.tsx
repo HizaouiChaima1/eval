@@ -13,6 +13,19 @@ export const metadata = buildMetadata({
 
 export const revalidate = 60
 
+// Type correspondant à ce que retourne getCachedTasks.
+// Adapte les champs si ta structure réelle diffère (ex: description optionnelle, etc.)
+type Task = {
+  id: number
+  title: string
+  description: string | null
+  completed: boolean
+  createdAt: Date | string
+  user: {
+    name: string
+  }
+}
+
 async function TaskList({ userId }: { userId: number | null }) {
   if (!userId) {
     return (
@@ -36,8 +49,8 @@ async function TaskList({ userId }: { userId: number | null }) {
     )
   }
 
-  const tasks = await getCachedTasks(userId)
-  const completedCount = tasks.filter((t) => t.completed).length
+  const tasks: Task[] = await getCachedTasks(userId)
+  const completedCount = tasks.filter((t: Task) => t.completed).length
   const pendingCount = tasks.length - completedCount
 
   if (tasks.length === 0) {
@@ -186,5 +199,4 @@ export default async function Home() {
         <TaskList userId={userId} />
       </Suspense>
     </div>
-  )
-}
+  )}
