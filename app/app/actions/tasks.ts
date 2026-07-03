@@ -87,7 +87,9 @@ export async function updateTaskAction(
   })
 
   invalidateTaskCache(taskId)
-  return { success: true, message: 'Tâche mise à jour' }
+  //return { success: true, message: 'Tâche mise à jour' }
+   redirect('/')
+ 
 }
 
 export async function deleteTaskAction(taskId: number): Promise<void> {

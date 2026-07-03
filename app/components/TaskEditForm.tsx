@@ -72,9 +72,6 @@ export function TaskEditForm({ taskId, defaultValues }: TaskEditFormProps) {
       </form>
 
       <form action={deleteTaskAction.bind(null, taskId)} className="card p-6">
-        <p className="mb-4 text-sm text-slate-500">
-          Cette action est irréversible. La tâche sera définitivement supprimée.
-        </p>
         <button type="submit" className="btn-danger">
           Supprimer la tâche
         </button>
