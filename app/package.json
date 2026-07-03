@@ -4,17 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate --schema ../prisma/schema.prisma && next build",
+    "build": "prisma generate --schema ./prisma/schema.prisma && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:generate": "prisma generate --schema ../prisma/schema.prisma",
-    "db:migrate": "prisma migrate dev --schema ../prisma/schema.prisma",
-    "db:push": "prisma db push --schema ../prisma/schema.prisma --config ../prisma/prisma.config.ts"
+    "db:generate": "prisma generate --schema ./prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema ./prisma/schema.prisma",
+    "db:push": "prisma db push --schema ./prisma/schema.prisma --config ./prisma/prisma.config.ts"
   },
   "prisma": {
-    "schema": "../prisma/schema.prisma"
+    "schema": "./prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
